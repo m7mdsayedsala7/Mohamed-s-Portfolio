@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mohamed Sayed Salah · Digital Marketing Executive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg-deep:#060912;
+  --bg-surface:#0C1025;
+  --bg-card:#121929;
+  --bg-card-h:#161E32;
+  --border:rgba(255,255,255,0.06);
+  --border-a:rgba(75,130,247,0.35);
+  --accent:#4B82F7;
+  --accent-2:#E9A930;
+  --text-1:#EDF0F8;
+  --text-2:#8694B0;
+  --text-3:#4A566E;
+  --font-display:'Syne',sans-serif;
+  --font-sans:'Outfit',sans-serif;
+  --font-data:'JetBrains Mono',monospace;
+  --r:12px;
+  --r-sm:8px;
+  --r-lg:20px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--bg-deep);color:var(--text-1);font-family:var(--font-sans);line-height:1.6;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .3s ease;
+}
+nav.scrolled{
+  background:rgba(6,9,18,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:14px 5%;
+}
+.nav-logo{
+  font-family:var(--font-display);
+  font-size:1.5rem;font-weight:600;
+  letter-spacing:0.02em;
+}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-2);transition:color .2s;}
+.nav-links a:hover{color:var(--text-1);}
+.nav-cta{
+  background:var(--accent);color:#fff;
+  padding:10px 22px;border-radius:50px;
+  font-size:.875rem;font-weight:500;
+  transition:transform .2s,opacity .2s;
+}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-toggle span{width:24px;height:2px;background:var(--text-1);border-radius:2px;transition:all .3s;}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 5% 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(75,130,247,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(75,130,247,0.04) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 60% at 60% 50%,black 30%,transparent 80%);
+}
+.hero-glow{
+  position:absolute;top:-20%;right:-10%;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(75,130,247,0.08) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-glow-2{
+  position:absolute;bottom:-20%;left:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(233,169,48,0.05) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:2;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(75,130,247,0.1);border:1px solid rgba(75,130,247,0.2);
+  padding:8px 16px;border-radius:50px;
+  font-family:var(--font-data);font-size:.8rem;font-weight:500;
+  color:var(--accent);letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:2rem;
+}
+.hero-eyebrow::before{
+  content:'';width:6px;height:6px;background:var(--accent);
+  border-radius:50%;animation:pulse-dot 2s infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+.hero-name{
+  font-family:var(--font-display);
+  font-size:clamp(3.5rem,8vw,7.5rem);
+  font-weight:400;
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  margin-bottom:.5rem;
+}
+.hero-name strong{font-weight:700;color:var(--accent);}
+.hero-tagline{
+  font-size:clamp(1rem,2.5vw,1.375rem);
+  color:var(--text-2);
+  max-width:520px;
+  line-height:1.5;
+  margin-bottom:3rem;
+  font-weight:300;
+}
+.hero-tagline strong{color:var(--text-1);font-weight:500;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;}
+.btn-primary{
+  background:var(--accent);color:#fff;
+  padding:14px 32px;border-radius:50px;
+  font-family:var(--font-sans);font-size:.9375rem;font-weight:500;
+  transition:transform .2s,box-shadow .2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(75,130,247,0.3);}
+.btn-secondary{
+  background:transparent;color:var(--text-1);
+  padding:14px 32px;border-radius:50px;
+  border:1px solid var(--border-a);
+  font-family:var(--font-sans);font-size:.9375rem;font-weight:500;
+  transition:all .2s;
+}
+.btn-secondary:hover{background:rgba(75,130,247,0.08);border-color:var(--accent);}
+.btn-outline{
+  background:transparent;color:var(--text-2);
+  padding:14px 32px;border-radius:50px;
+  border:1px solid var(--border);
+  font-family:var(--font-sans);font-size:.9375rem;font-weight:500;
+  transition:all .2s;
+}
+.btn-outline:hover{color:var(--text-1);border-color:var(--text-2);}
+
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  max-width:700px;
+}
+.hero-stat{
+  background:var(--bg-card);
+  padding:1.25rem 1.5rem;
+  text-align:center;
+}
+.hero-stat-num{
+  font-family:var(--font-data);
+  font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:600;
+  color:var(--text-1);
+  display:block;
+}
+.hero-stat-num .accent{color:var(--accent);}
+.hero-stat-num .gold{color:var(--accent-2);}
+.hero-stat-label{
+  font-size:.7rem;font-weight:500;
+  color:var(--text-3);
+  text-transform:uppercase;letter-spacing:.06em;
+  margin-top:4px;display:block;
+}
+
+/* SECTION COMMON */
+section{padding:100px 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-eyebrow{
+  font-family:var(--font-data);
+  font-size:.8rem;font-weight:500;
+  color:var(--accent);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:.75rem;
+  display:flex;align-items:center;gap:10px;
+}
+.section-eyebrow::before{content:'';flex:0 0 28px;height:1px;background:var(--accent);}
+.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(2rem,5vw,3.25rem);
+  font-weight:600;line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:1rem;
+}
+.section-desc{
+  font-size:1.0625rem;color:var(--text-2);
+  max-width:560px;line-height:1.65;
+}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ABOUT */
+.about{background:var(--bg-surface);}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;
+}
+.about-text p{
+  color:var(--text-2);font-size:1.0625rem;line-height:1.75;
+  margin-bottom:1.25rem;
+}
+.about-text p strong{color:var(--text-1);}
+.about-cards{display:flex;flex-direction:column;gap:1rem;}
+.about-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.5rem;
+  transition:border-color .2s;
+}
+.about-card:hover{border-color:var(--border-a);}
+.about-card-head{display:flex;align-items:center;gap:12px;margin-bottom:.75rem;}
+.about-card-icon{
+  width:40px;height:40px;border-radius:var(--r-sm);
+  background:rgba(75,130,247,0.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.about-card-icon.gold{background:rgba(233,169,48,0.1);}
+.about-card-title{font-weight:600;font-size:1rem;}
+.about-card-val{font-family:var(--font-data);font-size:1.625rem;font-weight:600;color:var(--accent);margin-bottom:.25rem;}
+.about-card-val.gold{color:var(--accent-2);}
+.about-card-desc{font-size:.875rem;color:var(--text-2);}
+.industries-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
+.industry-tag{
+  background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  padding:6px 14px;border-radius:50px;
+  font-size:.8125rem;color:var(--text-2);font-weight:500;
+}
+
+/* EXPERTISE */
+.expertise-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+  margin-top:3.5rem;
+}
+.expertise-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:2rem;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+}
+.expertise-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.expertise-card:hover{transform:translateY(-4px);border-color:var(--border-a);box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.expertise-card:hover::before{opacity:1;}
+.expertise-icon{
+  width:52px;height:52px;border-radius:var(--r-sm);
+  background:rgba(75,130,247,0.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:1.25rem;
+}
+.expertise-icon.gold{background:rgba(233,169,48,0.1);}
+.expertise-title{font-size:1.0625rem;font-weight:600;margin-bottom:.625rem;}
+.expertise-desc{font-size:.9rem;color:var(--text-2);line-height:1.65;}
+
+/* EXPERIENCE */
+.experience{background:var(--bg-surface);}
+.timeline{position:relative;padding-left:32px;margin-top:3.5rem;}
+.timeline::before{
+  content:'';position:absolute;left:6px;top:8px;bottom:0;width:1px;
+  background:linear-gradient(var(--border-a),transparent);
+}
+.timeline-item{position:relative;margin-bottom:3rem;}
+.timeline-dot{
+  position:absolute;left:-32px;top:6px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--bg-deep);border:2px solid var(--accent);
+}
+.timeline-dot.gold{border-color:var(--accent-2);}
+.timeline-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:1.75rem 2rem;
+  transition:border-color .2s;
+}
+.timeline-card:hover{border-color:var(--border-a);}
+.timeline-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.625rem;}
+.timeline-role{font-size:1.125rem;font-weight:600;}
+.timeline-period{
+  font-family:var(--font-data);font-size:.8rem;font-weight:500;
+  color:var(--accent);background:rgba(75,130,247,0.1);
+  padding:4px 12px;border-radius:50px;white-space:nowrap;
+}
+.timeline-period.gold{color:var(--accent-2);background:rgba(233,169,48,0.1);}
+.timeline-company{font-size:.9375rem;color:var(--text-2);font-weight:500;margin-bottom:1rem;}
+.timeline-company span{color:var(--accent);}
+.timeline-points{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.timeline-points li{
+  font-size:.9rem;color:var(--text-2);line-height:1.55;
+  padding-left:1.25rem;position:relative;
+}
+.timeline-points li::before{
+  content:'→';position:absolute;left:0;color:var(--accent);font-size:.8rem;
+}
+.timeline-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem;}
+.timeline-tag{
+  background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  padding:4px 12px;border-radius:50px;
+  font-family:var(--font-data);font-size:.75rem;color:var(--text-3);
+}
+
+/* PORTFOLIO */
+.portfolio-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:end;margin-bottom:3.5rem;
+}
+.portfolio-campaigns{display:flex;flex-direction:column;gap:1.25rem;}
+.campaign-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:2rem;
+  transition:border-color .2s;
+}
+.campaign-card:hover{border-color:var(--border-a);}
+.campaign-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem;flex-wrap:wrap;gap:.75rem;}
+.campaign-title-block h3{font-size:1.0625rem;font-weight:600;margin-bottom:.25rem;}
+.campaign-title-block p{font-size:.875rem;color:var(--text-2);}
+.campaign-badge{
+  padding:5px 14px;border-radius:50px;font-family:var(--font-data);
+  font-size:.75rem;font-weight:500;white-space:nowrap;
+}
+.badge-b2b{background:rgba(75,130,247,0.12);color:var(--accent);border:1px solid rgba(75,130,247,0.2);}
+.badge-b2c{background:rgba(233,169,48,0.12);color:var(--accent-2);border:1px solid rgba(233,169,48,0.2);}
+.badge-ecom{background:rgba(80,200,120,0.12);color:#50C878;border:1px solid rgba(80,200,120,0.2);}
+.badge-re{background:rgba(180,130,255,0.12);color:#B482FF;border:1px solid rgba(180,130,255,0.2);}
+.campaign-metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border-radius:var(--r-sm);overflow:hidden;
+  margin-bottom:1.25rem;
+}
+.campaign-metric{
+  background:var(--bg-card-h);padding:1rem;text-align:center;
+}
+.campaign-metric-val{
+  font-family:var(--font-data);font-size:1.2rem;font-weight:600;
+  color:var(--text-1);display:block;margin-bottom:3px;
+}
+.campaign-metric-val.a{color:var(--accent);}
+.campaign-metric-val.g{color:#50C878;}
+.campaign-metric-label{font-size:.7rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;}
+.campaign-desc{font-size:.875rem;color:var(--text-2);line-height:1.6;}
+
+/* Portfolio summary row */
+.portfolio-summary{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+  margin-top:2rem;
+}
+.portfolio-summary-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.25rem;text-align:center;
+}
+.portfolio-summary-num{
+  font-family:var(--font-data);font-size:1.75rem;font-weight:600;
+  color:var(--accent);display:block;
+}
+.portfolio-summary-num.gold{color:var(--accent-2);}
+.portfolio-summary-label{font-size:.8rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;}
+
+
+/* SKILLS */
+.skills-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;margin-top:3rem;
+}
+.skills-category{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:1.5rem;
+}
+.skills-category-title{
+  font-size:.8rem;font-weight:600;
+  color:var(--text-2);text-transform:uppercase;letter-spacing:.08em;
+  margin-bottom:1rem;
+  display:flex;align-items:center;gap:8px;
+}
+.skills-category-title::before{content:'';width:4px;height:16px;background:var(--accent);border-radius:2px;}
+.skills-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.skill-tag{
+  background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  padding:6px 14px;border-radius:50px;
+  font-size:.8125rem;color:var(--text-2);font-weight:500;
+  transition:all .15s;
+}
+.skill-tag:hover{background:rgba(75,130,247,0.1);border-color:rgba(75,130,247,0.3);color:var(--accent);}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--bg-surface);}
+.testimonials-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.25rem;margin-top:3rem;
+}
+.testimonial-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:2rem;
+  position:relative;overflow:hidden;
+}
+.testimonial-card::before{
+  content:'"';
+  position:absolute;right:1.5rem;top:1rem;
+  font-family:var(--font-display);font-size:6rem;line-height:1;
+  color:rgba(75,130,247,0.08);font-weight:700;
+}
+.testimonial-text{
+  font-size:1rem;color:var(--text-2);line-height:1.7;
+  margin-bottom:1.5rem;font-style:italic;
+}
+.testimonial-author{display:flex;align-items:center;gap:.875rem;}
+.testimonial-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),#7B5CF6);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.875rem;font-weight:600;color:#fff;flex-shrink:0;
+}
+.testimonial-name{font-weight:600;font-size:.9375rem;}
+.testimonial-title{font-size:.8125rem;color:var(--text-2);}
+.testimonial-co{font-size:.8rem;color:var(--accent);}
+
+/* INSIGHTS (Thought Leadership) */
+.insights-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;margin-top:3rem;
+}
+.insight-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:1.75rem;
+  transition:transform .25s,border-color .25s;
+}
+.insight-card:hover{transform:translateY(-3px);border-color:var(--border-a);}
+.insight-tag{
+  font-family:var(--font-data);font-size:.7rem;font-weight:600;
+  color:var(--accent-2);text-transform:uppercase;letter-spacing:.08em;
+  margin-bottom:.75rem;
+}
+.insight-title{font-size:1rem;font-weight:600;line-height:1.4;margin-bottom:.75rem;}
+.insight-desc{font-size:.875rem;color:var(--text-2);line-height:1.6;}
+
+/* CONTACT */
+.contact{background:var(--bg-surface);}
+.contact-grid{
+  display:flex;flex-direction:column;gap:0;align-items:flex-start;margin-top:3.5rem;
+}
+.contact-info h3{font-size:1.25rem;font-weight:600;margin-bottom:.5rem;}
+.contact-info > p{color:var(--text-2);line-height:1.65;margin-bottom:2rem;}
+.contact-links{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;max-width:700px;}
+.contact-link{
+  display:flex;align-items:center;gap:.875rem;
+  padding:1rem 1.25rem;
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r);transition:all .2s;
+}
+.contact-link:hover{border-color:var(--border-a);background:var(--bg-card-h);}
+.contact-link-icon{
+  width:38px;height:38px;border-radius:var(--r-sm);
+  background:rgba(75,130,247,0.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.contact-link-text{font-size:.875rem;font-weight:500;}
+.contact-link-sub{font-size:.8rem;color:var(--text-2);}
+
+/* FOOTER */
+footer{
+  padding:2.5rem 5%;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-left{font-size:.875rem;color:var(--text-3);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:.875rem;color:var(--text-3);transition:color .2s;}
+.footer-links a:hover{color:var(--text-1);}
+
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:99;
+  background:rgba(6,9,18,0.97);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:2rem;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.5rem;font-weight:500;color:var(--text-1);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .expertise-grid{grid-template-columns:repeat(2,1fr);}
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .testimonials-grid{grid-template-columns:1fr;}
+
+  .portfolio-header{grid-template-columns:1fr;gap:30px;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .campaign-metrics{grid-template-columns:repeat(2,1fr);}
+  .portfolio-summary{grid-template-columns:repeat(2,1fr);}
+  .insights-grid{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  nav{padding:16px 4%;}
+  .nav-links{display:none;}
+  .nav-toggle{display:flex;}
+  .hero{padding:100px 4% 60px;}
+  section{padding:70px 4%;}
+  .expertise-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .portfolio-summary{grid-template-columns:1fr 1fr;}
+  footer{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">MS<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#experience">Experience</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="mailto:mohamedsayedsalah6@gmail.com" class="nav-cta">Get in Touch</a>
+  <div class="nav-toggle" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#expertise" onclick="closeMobile()">Expertise</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow reveal">Available for Partnerships & Strategic Roles</div>
+    <h1 class="hero-name reveal">
+      Mohamed Sayed<br/><strong>Salah</strong>
+    </h1>
+    <p class="hero-tagline reveal">
+      <strong>Digital Marketing Executive</strong> helping brands grow through data-driven media buying, conversion optimization, and full-funnel campaign strategy.
+    </p>
+    <div class="hero-ctas reveal">
+      <a href="#portfolio" class="btn-primary">View My Work ↓</a>
+      <a href="#contact" class="btn-secondary">Let's Connect</a>
+      <a href="mailto:mohamedsayedsalah6@gmail.com" class="btn-outline">Schedule a Call</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat">
+        <span class="hero-stat-num"><span class="counter accent" data-target="6100000" data-prefix="" data-suffix="M+">6.1M+</span></span>
+        <span class="hero-stat-label">Impressions · 2025-26</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num"><span class="counter" data-target="5360" data-prefix="" data-suffix="+">5,360+</span></span>
+        <span class="hero-stat-label">Leads Generated · 2025-26</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num"><span class="counter gold" data-target="30" data-prefix="" data-suffix="X">30X</span></span>
+        <span class="hero-stat-label">Peak ROAS Achieved</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num"><span class="counter" data-target="115" data-prefix="" data-suffix="+">115+</span></span>
+        <span class="hero-stat-label">Campaigns · 2025-26</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-eyebrow">About</div>
+        <h2 class="section-title">Turning data into<br/>measurable growth</h2>
+        <p>I'm a <strong>Digital Marketing Executive</strong> based in Cairo, Egypt, with hands-on experience running high-impact campaigns across e-commerce, real estate, F&B, and logistics sectors in Egypt and the UAE.</p>
+        <p>My journey began in design, giving me a rare creative-analytical edge: I understand not just the data behind a campaign, but how to craft the creative that drives it. From a <strong>30X ROAS</strong> campaign that contributed to <strong>1.7 billion EGP in real estate sales</strong>, to managing <strong>six-figure monthly ad budgets</strong> for a German e-commerce firm, every role has deepened my conviction that performance marketing is equal parts science and craft.</p>
+        <p>Today, I lead digital marketing for <strong>Ai-CHA</strong>, an international F&B brand, where I drive both B2B franchise acquisition and B2C brand growth, overseeing the full marketing lifecycle from strategy to execution to reporting.</p>
+        <p>I'm <strong>ambitious, relentless, and driven by a clear vision</strong>: to build marketing engines that don't just spend budgets, but generate compounding business results.</p>
+        <div class="industries-row">
+          <span class="industry-tag">🍵 F&B</span>
+          <span class="industry-tag">🏠 Real Estate</span>
+          <span class="industry-tag">📦 E-commerce</span>
+          <span class="industry-tag">🚚 Logistics</span>
+          <span class="industry-tag">🤝 Franchise</span>
+        </div>
+      </div>
+      <div class="about-cards reveal">
+        <div class="about-card">
+          <div class="about-card-head">
+            <div class="about-card-icon gold">🏆</div>
+            <div class="about-card-title">Career Highlight</div>
+          </div>
+          <div class="about-card-val gold">1.7B EGP</div>
+          <div class="about-card-desc">Contributed to 1.7 billion EGP in real estate sales at DOSE by Akam, achieving a 30X ROAS on a high-profile launch campaign.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-head">
+            <div class="about-card-icon">📊</div>
+            <div class="about-card-title">Budget Management</div>
+          </div>
+          <div class="about-card-val">6-Figure</div>
+          <div class="about-card-desc">Managed six-figure monthly ad budgets at NEST Group, generating 3M+ EGP in revenue with consistently above-benchmark ROAS across 30+ campaigns.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-head">
+            <div class="about-card-icon">🎯</div>
+            <div class="about-card-title">Lead Generation</div>
+          </div>
+          <div class="about-card-val">5,360+</div>
+          <div class="about-card-desc">Generated 5,360+ qualified B2B and B2C leads at Ai-CHA through Meta and Google campaigns across Egypt, with a 16.5 EGP average CPL.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-head">
+            <div class="about-card-icon gold">🌍</div>
+            <div class="about-card-title">International Experience</div>
+          </div>
+          <div class="about-card-val gold">4 Markets</div>
+          <div class="about-card-desc">Managed performance campaigns across Egypt, UAE, and pan-regional markets, delivering strong lead volume and competitive CPL at Ya Media, Dubai.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Core Expertise</div>
+    <h2 class="section-title reveal">Where strategy<br/>meets execution</h2>
+    <div class="expertise-grid">
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">🎯</div>
+        <div class="expertise-title">Performance Media Buying</div>
+        <div class="expertise-desc">Expert-level campaign management on Meta Ads, Google Ads, LinkedIn, and Snapchat. From audience architecture and bid strategy to creative testing and budget scaling, built to deliver results that beat benchmarks.</div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">📈</div>
+        <div class="expertise-title">Marketing Analytics & Attribution</div>
+        <div class="expertise-desc">Data-first approach to every campaign. Proficient in Google Analytics, Meta reporting, and custom KPI dashboards. I don't just read the data. I use it to make decisive optimizations that compound performance over time.</div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon gold">🔄</div>
+        <div class="expertise-title">Conversion Rate Optimization</div>
+        <div class="expertise-desc">Systematic A/B testing of creatives, landing pages, ad copy, and audience segments. I've driven CPL reductions and ROAS improvements by identifying and eliminating the friction points others overlook.</div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">🎨</div>
+        <div class="expertise-title">Performance Creative & Copywriting</div>
+        <div class="expertise-desc">A rare combination: technical media buyer with in-house design capability. I produce scroll-stopping ad creatives, direct-response copy, and video concepts using the full Adobe suite. Assets built to convert, not just to look good.</div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon gold">🚀</div>
+        <div class="expertise-title">Full-Funnel Growth Strategy</div>
+        <div class="expertise-desc">Architecting multi-stage funnels, from awareness and consideration to lead capture and loyalty, aligned to real business goals. Experienced in both B2B franchise acquisition and B2C consumer marketing simultaneously.</div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="expertise-icon">📋</div>
+        <div class="expertise-title">Campaign Strategy & Media Planning</div>
+        <div class="expertise-desc">End-to-end media planning from brief to post-campaign analysis. Skilled in building data-driven media plans, managing multi-account advertising portfolios, and aligning tactical execution with broader brand and business objectives.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Career Journey</div>
+    <h2 class="section-title reveal">Professional<br/>Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div>
+              <div class="timeline-role">Digital Marketing Executive</div>
+              <div class="timeline-company"><span>Ai-CHA</span> · International F&B Brand · CFC, New Cairo, Egypt</div>
+            </div>
+            <div class="timeline-period">Jan 2026 – Present</div>
+          </div>
+          <ul class="timeline-points">
+            <li>Managed and executed B2B lead generation campaigns to attract potential franchise partners across Egypt, generating 5,360+ qualified franchise leads at an average CPL of 16.5 EGP.</li>
+            <li>Planned and optimized B2C campaigns across Meta platforms to drive brand awareness, engagement (275,000+ post engagements), and customer acquisition.</li>
+            <li>Designed high-performance creatives for digital advertising and social media, leveraging the full Adobe Creative Suite for campaign assets.</li>
+            <li>Developed marketing content and offline activation strategies, including franchise openings, in-store events, and partnership activations.</li>
+            <li>Conducted ongoing market and competitor analysis to inform media strategy and budget allocation decisions.</li>
+            <li>Coordinated store launches and franchise activations across multiple Egyptian cities including Cairo, Obour, Alexandria, and Mansoura.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Meta Ads</span>
+            <span class="timeline-tag">B2B Lead Gen</span>
+            <span class="timeline-tag">B2C Campaigns</span>
+            <span class="timeline-tag">Creative Design</span>
+            <span class="timeline-tag">Franchise Marketing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot gold"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div>
+              <div class="timeline-role">Performance Marketing Specialist</div>
+              <div class="timeline-company"><span>Ya Media</span> · Marketing Agency · Dubai, UAE</div>
+            </div>
+            <div class="timeline-period gold">Sep 2025 – Jan 2026</div>
+          </div>
+          <ul class="timeline-points">
+            <li>Managed and optimized four advertising accounts simultaneously, including strategy development, media planning, and full-funnel campaign execution.</li>
+            <li>Oversaw Lead Generation campaigns across Meta and Google in the UAE market, delivering strong lead volume and competitive CPL against local benchmarks.</li>
+            <li>Built data-driven media plans aligned with each client's business objectives and market dynamics.</li>
+            <li>Improved campaign performance through structured A/B testing, creative iteration, and refined audience segmentation frameworks.</li>
+            <li>Monitored KPIs in real time and reallocated budgets strategically to maintain performance consistently above industry benchmarks.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Multi-Account Management</span>
+            <span class="timeline-tag">UAE Market</span>
+            <span class="timeline-tag">Google Ads</span>
+            <span class="timeline-tag">Media Planning</span>
+            <span class="timeline-tag">A/B Testing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div>
+              <div class="timeline-role">Performance Marketing Specialist</div>
+              <div class="timeline-company"><span>NEST Group</span> · German E-commerce & Logistics Firm · New Cairo, Egypt</div>
+            </div>
+            <div class="timeline-period">Sep 2024 – Sep 2025</div>
+          </div>
+          <ul class="timeline-points">
+            <li>Managed six-figure monthly ad budgets with consistently above-benchmark ROAS across the e-commerce and logistics verticals.</li>
+            <li>Planned, managed, and optimized 30+ campaigns with 600K+ EGP in total spend, generating 3M+ EGP in tracked revenue.</li>
+            <li>Generated tens of thousands of conversions through advanced audience segmentation, lookalike modeling, and retargeting strategies.</li>
+            <li>Launched and tested variant ad creatives that delivered strong engagement and high ROAS, identifying winning formats through disciplined testing.</li>
+            <li>Monitored KPIs and reallocated budgets dynamically to maximize ROI across campaign types and platforms.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Six-Figure Budgets</span>
+            <span class="timeline-tag">E-commerce</span>
+            <span class="timeline-tag">3M+ EGP Revenue</span>
+            <span class="timeline-tag">Audience Segmentation</span>
+            <span class="timeline-tag">ROAS Optimization</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot gold"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div>
+              <div class="timeline-role">Digital Marketing Specialist</div>
+              <div class="timeline-company"><span>Broketopia Real Estate</span> &middot; New Cairo, Egypt</div>
+            </div>
+            <div class="timeline-period gold">Oct 2023 – Sep 2024</div>
+          </div>
+          <ul class="timeline-points">
+            <li>Hired full-time after a one-month internship based on demonstrated impact. Developed and managed end-to-end digital marketing strategies for real estate properties.</li>
+            <li>Executed Meta Ads and Google Ads campaigns for lead generation and property sales conversions across Cairo's competitive real estate market.</li>
+            <li>Managed advertising budgets and tracked performance metrics to continually maximize ROI.</li>
+            <li>Created graphic assets for digital and print media, increasing property listing engagement across platforms.</li>
+            <li>Developed organic and Property Finder advertising strategies to increase visibility and generate qualified buyer leads.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Real Estate</span>
+            <span class="timeline-tag">Meta Ads</span>
+            <span class="timeline-tag">Google Ads</span>
+            <span class="timeline-tag">Lead Generation</span>
+            <span class="timeline-tag">Graphic Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div>
+              <div class="timeline-role">Digital Marketing Intern → Specialist</div>
+              <div class="timeline-company"><span>Akam Alrajhi Developments & Akam Developments</span> &middot; New Cairo, Egypt</div>
+            </div>
+            <div class="timeline-period">Apr 2023 – Oct 2023</div>
+          </div>
+          <ul class="timeline-points">
+            <li>Contributed to a landmark campaign for the DOSE project that achieved a <strong style="color:var(--accent-2)">30X ROAS and contributed to 1.7 billion EGP in sales</strong>, one of the strongest campaign results in the portfolio.</li>
+            <li>Collaborated on formulating and executing digital marketing strategies to drive brand awareness and qualified lead generation.</li>
+            <li>Analyzed website metrics and traffic patterns, implementing optimizations that resulted in 20% web traffic growth.</li>
+            <li>Contributed to the Cityscape Exhibition by developing promotional materials and engaging directly with high-value prospects.</li>
+          </ul>
+          <div class="timeline-tags">
+            <span class="timeline-tag">30X ROAS</span>
+            <span class="timeline-tag">1.7B EGP Sales</span>
+            <span class="timeline-tag">Brand Campaigns</span>
+            <span class="timeline-tag">Cityscape Exhibition</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-eyebrow reveal">Portfolio</div>
+        <h2 class="section-title reveal">Campaigns That<br/>Delivered Results</h2>
+      </div>
+      <p class="section-desc reveal" style="margin-top:0;align-self:flex-end">All campaign data shown is from 2025-2026 only, pulled directly from live Meta Ads dashboards. No estimates, no projections.</p>
+    </div>
+
+    <div class="portfolio-campaigns">
+
+      <!-- Campaign 1: B2B Franchise Lead Gen -->
+      <div class="campaign-card reveal">
+        <div class="campaign-head">
+          <div class="campaign-title-block">
+            <h3>B2B Franchise Lead Generation · Ai-CHA Egypt</h3>
+            <p>Meta Ads · Lead Generation · Multiple Campaigns · Jun 2025 – Jun 2026</p>
+          </div>
+          <span class="campaign-badge badge-b2b">B2B · Franchise</span>
+        </div>
+        <div class="campaign-metrics">
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">5,360+</span>
+            <span class="campaign-metric-label">Qualified Leads</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val">700K+</span>
+            <span class="campaign-metric-label">Total Reach</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val g">16.54 EGP</span>
+            <span class="campaign-metric-label">Avg. Cost Per Lead</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">24</span>
+            <span class="campaign-metric-label">Campaigns Run</span>
+          </div>
+        </div>
+        <p class="campaign-desc">Architected and managed a full B2B franchise lead generation system for Ai-CHA across New Cairo, Obour, Alexandria, Mansoura, and national Egypt targeting. Strategy included audience segmentation by investor profile, multiple ad set variants, iterative creative testing, and CPL optimization through budget reallocation. Best-performing campaign achieved a 10.14 EGP CPL against a 16.5 EGP average, delivering 839 qualified franchise leads from a single ad set.</p>
+      </div>
+
+      <!-- Campaign 2: B2C Engagement & Brand -->
+      <div class="campaign-card reveal">
+        <div class="campaign-head">
+          <div class="campaign-title-block">
+            <h3>B2C Brand Awareness & Engagement · Ai-CHA Products</h3>
+            <p>Meta Ads · Post Engagement · Instagram & Facebook · 2025–2026</p>
+          </div>
+          <span class="campaign-badge badge-b2c">B2C · Brand</span>
+        </div>
+        <div class="campaign-metrics">
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">275,000+</span>
+            <span class="campaign-metric-label">Total Engagements</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val">4M+</span>
+            <span class="campaign-metric-label">Total Reach</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val g">0.05 EGP</span>
+            <span class="campaign-metric-label">Min. Cost/Engagement</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">56,671</span>
+            <span class="campaign-metric-label">Best Single Post</span>
+          </div>
+        </div>
+        <p class="campaign-desc">Planned and executed a comprehensive B2C campaign portfolio for Ai-CHA's product line including Milk Tea, Sund-Ai, Blueberry variants, and limited-time offers. Strategy integrated viral reel boosting, product launch amplification, seasonal promotions, and platform-specific content (Instagram Reels vs. Facebook). The Milk Tea Brown Sugar Pearls reel campaign alone generated 56,671 engagements, a flagship creative performance benchmark. Also managed Talabat platform campaigns (awareness, engagement, traffic) to drive delivery app conversions.</p>
+      </div>
+
+      <!-- Campaign 3: NEST Group -->
+      <div class="campaign-card reveal">
+        <div class="campaign-head">
+          <div class="campaign-title-block">
+            <h3>E-commerce Performance Marketing · NEST Group</h3>
+            <p>Meta Ads · E-commerce Conversions · Six-Figure Monthly Budgets · 2024–2025</p>
+          </div>
+          <span class="campaign-badge badge-ecom">E-commerce</span>
+        </div>
+        <div class="campaign-metrics">
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">3M+ EGP</span>
+            <span class="campaign-metric-label">Revenue Generated</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val">600K+ EGP</span>
+            <span class="campaign-metric-label">Total Ad Spend</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val g">Above</span>
+            <span class="campaign-metric-label">Industry ROAS</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">30+</span>
+            <span class="campaign-metric-label">Campaigns Managed</span>
+          </div>
+        </div>
+        <p class="campaign-desc">Led full-funnel performance marketing for a German e-commerce and logistics company operating in Egypt, managing six-figure monthly ad budgets with accountability for ROAS, CPA, and revenue targets. Delivered 3M+ EGP in tracked revenue through advanced audience segmentation, dynamic product ads, lookalike audience scaling, and systematic A/B testing. Tens of thousands of conversions generated across the campaign period through disciplined budget management and creative optimization.</p>
+      </div>
+
+      <!-- Campaign 4: Real Estate -->
+      <div class="campaign-card reveal">
+        <div class="campaign-head">
+          <div class="campaign-title-block">
+            <h3>Real Estate Campaign · DOSE Project by Akam</h3>
+            <p>Meta Ads · Google Ads · Lead Generation & Brand · 2023</p>
+          </div>
+          <span class="campaign-badge badge-re">Real Estate</span>
+        </div>
+        <div class="campaign-metrics">
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">1.7B EGP</span>
+            <span class="campaign-metric-label">Sales Contribution</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val g">30X</span>
+            <span class="campaign-metric-label">ROAS Achieved</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val">+20%</span>
+            <span class="campaign-metric-label">Web Traffic Growth</span>
+          </div>
+          <div class="campaign-metric">
+            <span class="campaign-metric-val a">Cityscape</span>
+            <span class="campaign-metric-label">Exhibition Activation</span>
+          </div>
+        </div>
+        <p class="campaign-desc">As part of the marketing team at Akam Alrajhi Developments, contributed to the landmark DOSE project campaign, one of Egypt's highest-performing real estate digital campaigns of 2023. The integrated strategy across Meta and Google achieved a 30X ROAS, contributed to 1.7 billion EGP in project sales, and grew web traffic by 20%. The campaign also included on-ground activation at the Cityscape Exhibition, combining digital precision with physical brand presence for maximum funnel coverage.</p>
+      </div>
+
+    </div>
+
+    <div class="portfolio-summary">
+      <div class="portfolio-summary-card reveal">
+        <span class="portfolio-summary-num">4M+</span>
+        <span class="portfolio-summary-label">Total Reach · 2025-26</span>
+      </div>
+      <div class="portfolio-summary-card reveal">
+        <span class="portfolio-summary-num gold">88K EGP</span>
+        <span class="portfolio-summary-label">B2B Franchise Spend</span>
+      </div>
+      <div class="portfolio-summary-card reveal">
+        <span class="portfolio-summary-num">6.1M+</span>
+        <span class="portfolio-summary-label">Total Impressions · 2025-26</span>
+      </div>
+      <div class="portfolio-summary-card reveal">
+        <span class="portfolio-summary-num gold">160K EGP</span>
+        <span class="portfolio-summary-label">Ad Spend Managed (2025-26)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Skills & Tools</div>
+    <h2 class="section-title reveal">The technology stack<br/>behind the results</h2>
+    <div class="skills-grid">
+      <div class="skills-category reveal">
+        <div class="skills-category-title">Advertising Platforms</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Meta Ads (Facebook & Instagram)</span>
+          <span class="skill-tag">Google Ads (SEM)</span>
+          <span class="skill-tag">LinkedIn Ads</span>
+          <span class="skill-tag">Snapchat Ads</span>
+        </div>
+      </div>
+      <div class="skills-category reveal">
+        <div class="skills-category-title">Analytics & Tracking</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Google Analytics</span>
+          <span class="skill-tag">Meta Pixel & CAPI</span>
+          <span class="skill-tag">UTM Tracking</span>
+          <span class="skill-tag">Conversion Tracking</span>
+          <span class="skill-tag">Attribution Modeling</span>
+        </div>
+      </div>
+      <div class="skills-category reveal">
+        <div class="skills-category-title">Marketing Strategy</div>
+        <div class="skills-tags">
+          <span class="skill-tag">CRO</span>
+          <span class="skill-tag">Full-Funnel Strategy</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">Audience Segmentation</span>
+          <span class="skill-tag">Media Planning</span>
+          <span class="skill-tag">SEO</span>
+        </div>
+      </div>
+      <div class="skills-category reveal">
+        <div class="skills-category-title">Design & Creative</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Adobe Photoshop</span>
+          <span class="skill-tag">Adobe Illustrator</span>
+          <span class="skill-tag">Adobe InDesign</span>
+          <span class="skill-tag">Adobe Premiere Pro</span>
+          <span class="skill-tag">Adobe XD</span>
+          <span class="skill-tag">Lightroom</span>
+        </div>
+      </div>
+      <div class="skills-category reveal">
+        <div class="skills-category-title">Platforms & Technology</div>
+        <div class="skills-tags">
+          <span class="skill-tag">WordPress</span>
+          <span class="skill-tag">Shopify</span>
+          <span class="skill-tag">Easy Order</span>
+          <span class="skill-tag">Ligh Funnel</span>
+        </div>
+      </div>
+      <div class="skills-category reveal">
+        <div class="skills-category-title">Content & Copywriting</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Ad Copywriting</span>
+          <span class="skill-tag">Content Strategy</span>
+          <span class="skill-tag">Social Media Content</span>
+          <span class="skill-tag">Campaign Messaging</span>
+          <span class="skill-tag">Arabic & English Copy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Recommendations</div>
+    <h2 class="section-title reveal">What my managers<br/>say about working with me</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">"Mohamed is such an excellent caliber, with outstanding talent and skills. I really appreciate his input during the AkamAlrajhi summer internship, and looking forward to more opportunities to work and learn together."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MK</div>
+          <div>
+            <div class="testimonial-name">Mohamed El Kholy, MBA</div>
+            <div class="testimonial-title">Marketing Director</div>
+            <div class="testimonial-co">AkamAlrajhi Developments & Akam Developments</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">"I wholeheartedly recommend Mohamed, one of the smartest and most brilliant people I've had the pleasure of working with. You have a promising future ahead, and I wish you the best of luck."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,var(--accent-2),#E06020)">MS</div>
+          <div>
+            <div class="testimonial-name">Mostafa El Shazly</div>
+            <div class="testimonial-title">Operations Manager</div>
+            <div class="testimonial-co">Broketopia Real Estate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Thought Leadership</div>
+    <h2 class="section-title reveal">Perspectives on<br/>performance marketing</h2>
+    <div class="insights-grid">
+      <div class="insight-card reveal">
+        <div class="insight-tag">Media Buying</div>
+        <div class="insight-title">Why CPL Is a Vanity Metric If You Don't Know Lead Quality</div>
+        <div class="insight-desc">Chasing the lowest Cost Per Lead often destroys campaign value. The brands that win are those that optimize for qualified lead rate, not raw volume. Audience segmentation and creative context are what determine whether a lead is a prospect or a time-waster.</div>
+      </div>
+      <div class="insight-card reveal">
+        <div class="insight-tag">Creative Strategy</div>
+        <div class="insight-title">The Performance Marketer Who Can Design Has an Unfair Advantage</div>
+        <div class="insight-desc">Most agencies split creative and buying into separate teams. When one person understands both, how the algorithm rewards certain creative signals and how to execute that creative, the feedback loop becomes exponentially faster and the results follow.</div>
+      </div>
+      <div class="insight-card reveal">
+        <div class="insight-tag">B2B Lead Gen</div>
+        <div class="insight-title">Running B2B and B2C Simultaneously Requires a Different Mental Model</div>
+        <div class="insight-desc">Franchise acquisition and retail consumer marketing operate on completely different timelines, decision journeys, and success metrics. Managing both at Ai-CHA simultaneously taught me that channel isolation, not just audience targeting, is what keeps performance clean.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build something<br/>great together</h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info">
+          <h3>Open to opportunities</h3>
+          <p>Whether you're a brand looking for a strategic growth partner, an agency seeking a seasoned performance marketer, or a business ready to scale, reach out through any of the channels below.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:mohamedsayedsalah6@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div>
+              <div class="contact-link-text">Email</div>
+              <div class="contact-link-sub">mohamedsayedsalah6@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:+201040205033" class="contact-link">
+            <div class="contact-link-icon">📞</div>
+            <div>
+              <div class="contact-link-text">Phone / WhatsApp</div>
+              <div class="contact-link-sub">+20 104 020 5033</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/mohamedsayedsalah" target="_blank" class="contact-link">
+            <div class="contact-link-icon">💼</div>
+            <div>
+              <div class="contact-link-text">LinkedIn Profile</div>
+              <div class="contact-link-sub">linkedin.com/in/mohamedsayedsalah</div>
+            </div>
+          </a>
+          <div class="contact-link" style="cursor:default;">
+            <div class="contact-link-icon">📍</div>
+            <div>
+              <div class="contact-link-text">Location</div>
+              <div class="contact-link-sub">Cairo, Egypt · Available Remotely</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input class="form-input" type="text" placeholder="Collaboration, job opportunity, consultation..."/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Tell me about what you're working on and how I can help..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message →</button>
+          <p id="form-msg" style="font-size:.875rem;color:#50C878;margin-top:.5rem;display:none;">✓ Message sent! I'll get back to you within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 Mohamed Sayed Salah. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="mailto:mohamedsayedsalah6@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/mohamedsayedsalah" target="_blank">LinkedIn</a>
+    <a href="tel:+201040205033">+20 104 020 5033</a>
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile menu
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObs.observe(el));
+
+// Counter animation
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const dur = 2000;
+  const steps = 60;
+  const inc = target / steps;
+  let current = 0;
+  let step = 0;
+  const timer = setInterval(() => {
+    step++;
+    current = Math.min(Math.round(inc * step), target);
+    let display;
+    if (target >= 1000000) {
+      display = (current / 1000000).toFixed(1) + 'M';
+    } else if (target >= 1000) {
+      display = current.toLocaleString();
+    } else {
+      display = current;
+    }
+    el.textContent = prefix + display + suffix;
+    if (step >= steps) clearInterval(timer);
+  }, dur / steps);
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+</script>
+</body>
+</html>
