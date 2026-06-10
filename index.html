@@ -27,9 +27,20 @@
   --r-sm:8px;
   --r-lg:20px;
 }
+/* ANIMATED GRADIENT BACKGROUND */
+#gradient-canvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+  opacity:0.55;
+}
+body > *:not(#gradient-canvas){position:relative;z-index:1;}
+nav,footer{position:fixed;}
+nav{z-index:100;}
+footer{position:relative;z-index:1;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;font-size:16px;}
 body{background:var(--bg-deep);color:var(--text-1);font-family:var(--font-sans);line-height:1.6;overflow-x:hidden;}
+html{overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;}
 
@@ -83,13 +94,13 @@ nav.scrolled{
 }
 .hero-glow{
   position:absolute;top:-20%;right:-10%;
-  width:700px;height:700px;
+  width:min(700px,100vw);height:min(700px,100vw);
   background:radial-gradient(circle,rgba(75,130,247,0.08) 0%,transparent 65%);
   pointer-events:none;
 }
 .hero-glow-2{
   position:absolute;bottom:-20%;left:-10%;
-  width:600px;height:600px;
+  width:min(600px,100vw);height:min(600px,100vw);
   background:radial-gradient(circle,rgba(233,169,48,0.05) 0%,transparent 65%);
   pointer-events:none;
 }
@@ -452,11 +463,12 @@ section{padding:100px 5%;}
 /* CONTACT */
 .contact{background:var(--bg-surface);}
 .contact-grid{
-  display:flex;flex-direction:column;gap:0;align-items:flex-start;margin-top:3.5rem;
+  display:grid;grid-template-columns:1fr;
+  gap:3rem;align-items:start;margin-top:3.5rem;
 }
 .contact-info h3{font-size:1.25rem;font-weight:600;margin-bottom:.5rem;}
 .contact-info > p{color:var(--text-2);line-height:1.65;margin-bottom:2rem;}
-.contact-links{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;max-width:700px;}
+.contact-links{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;}
 .contact-link{
   display:flex;align-items:center;gap:.875rem;
   padding:1rem 1.25rem;
@@ -472,6 +484,26 @@ section{padding:100px 5%;}
 }
 .contact-link-text{font-size:.875rem;font-weight:500;}
 .contact-link-sub{font-size:.8rem;color:var(--text-2);}
+
+/* CONTACT FORM */
+.contact-form-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;}
+.form-group{margin-bottom:1.25rem;}
+.form-label{display:block;font-size:.8125rem;font-weight:500;color:var(--text-2);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em;}
+.form-input,.form-textarea{
+  width:100%;background:var(--bg-deep);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:.875rem 1rem;
+  font-family:var(--font-sans);font-size:.9375rem;color:var(--text-1);
+  outline:none;transition:border-color .2s;
+}
+.form-input:focus,.form-textarea:focus{border-color:var(--accent);}
+.form-textarea{min-height:140px;resize:vertical;}
+.btn-submit{
+  width:100%;background:var(--accent);color:#fff;
+  padding:14px 32px;border-radius:50px;border:none;cursor:pointer;
+  font-family:var(--font-sans);font-size:.9375rem;font-weight:500;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(75,130,247,0.3);}
 
 /* FOOTER */
 footer{
@@ -501,7 +533,7 @@ footer{
   .expertise-grid{grid-template-columns:repeat(2,1fr);}
   .skills-grid{grid-template-columns:repeat(2,1fr);}
   .testimonials-grid{grid-template-columns:1fr;}
-
+  .contact-grid{grid-template-columns:1fr;}
   .portfolio-header{grid-template-columns:1fr;gap:30px;}
   .hero-stats{grid-template-columns:repeat(2,1fr);}
   .campaign-metrics{grid-template-columns:repeat(2,1fr);}
@@ -518,11 +550,18 @@ footer{
   .skills-grid{grid-template-columns:1fr;}
   .hero-stats{grid-template-columns:1fr 1fr;}
   .portfolio-summary{grid-template-columns:1fr 1fr;}
+  .campaign-metrics{grid-template-columns:repeat(2,1fr);}
+  .contact-links{grid-template-columns:1fr;}
+  .contact-form-wrap{padding:1.5rem;}
   footer{flex-direction:column;text-align:center;}
+  .hero-name{font-size:clamp(2.5rem,12vw,4rem);}
+  .hero-ctas{flex-direction:column;}
+  .btn-primary,.btn-secondary,.btn-outline{width:100%;text-align:center;justify-content:center;}
 }
 </style>
 </head>
 <body>
+<canvas id="gradient-canvas"></canvas>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -1155,19 +1194,7 @@ footer{
           </div>
         </div>
       </div>
-    </div>
-          <div class="form-group">
-            <label class="form-label">Subject</label>
-            <input class="form-input" type="text" placeholder="Collaboration, job opportunity, consultation..."/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Tell me about what you're working on and how I can help..."></textarea>
-          </div>
-          <button type="submit" class="btn-submit">Send Message →</button>
-          <p id="form-msg" style="font-size:.875rem;color:#50C878;margin-top:.5rem;display:none;">✓ Message sent! I'll get back to you within 24 hours.</p>
-        </form>
-      </div>
+
     </div>
   </div>
 </section>
@@ -1242,7 +1269,56 @@ const counterObs = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.5 });
-document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+// Animated gradient background
+(function(){
+  const canvas = document.getElementById('gradient-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const orbs = [
+    { x:0.2, y:0.3, r:0.45, color:[75,130,247],  speed:0.00018, angle:0 },
+    { x:0.8, y:0.2, r:0.40, color:[120,60,220],   speed:0.00013, angle:2.1 },
+    { x:0.6, y:0.75, r:0.50, color:[233,169,48],  speed:0.00010, angle:4.2 },
+    { x:0.15,y:0.8, r:0.38, color:[40,180,180],   speed:0.00015, angle:1.0 },
+  ];
+
+  function draw(ts){
+    ctx.clearRect(0,0,W,H);
+    orbs.forEach(o => {
+      o.angle += o.speed * ts * 0.016;
+      const cx = (o.x + Math.sin(o.angle) * 0.18) * W;
+      const cy = (o.y + Math.cos(o.angle * 0.7) * 0.14) * H;
+      const rad = o.r * Math.max(W, H);
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+      const [r,gv,b] = o.color;
+      g.addColorStop(0,   `rgba(${r},${gv},${b},0.22)`);
+      g.addColorStop(0.5, `rgba(${r},${gv},${b},0.07)`);
+      g.addColorStop(1,   `rgba(${r},${gv},${b},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(cx, cy, rad, 0, Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+
+// Contact form
+const contactForm = document.getElementById('contactForm');
+if(contactForm){
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    contactForm.reset();
+    setTimeout(()=>{ msg.style.display='none'; }, 5000);
+  });
+}
 
 </script>
 </body>
