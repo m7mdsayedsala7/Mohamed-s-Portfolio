@@ -31,7 +31,7 @@
 #gradient-canvas{
   position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:0;pointer-events:none;
-  opacity:0.55;
+  opacity:1;
 }
 body > *:not(#gradient-canvas){position:relative;z-index:1;}
 nav,footer{position:fixed;}
@@ -1271,24 +1271,29 @@ const counterObs = new IntersectionObserver((entries) => {
   window.addEventListener('resize', resize);
 
   const orbs = [
-    { x:0.2, y:0.3, r:0.45, color:[75,130,247],  speed:0.00018, angle:0 },
-    { x:0.8, y:0.2, r:0.40, color:[120,60,220],   speed:0.00013, angle:2.1 },
-    { x:0.6, y:0.75, r:0.50, color:[233,169,48],  speed:0.00010, angle:4.2 },
-    { x:0.15,y:0.8, r:0.38, color:[40,180,180],   speed:0.00015, angle:1.0 },
+    { x:0.2,  y:0.25, r:0.55, color:[75,130,247],   speed:0.0008, angle:0,   ox:0.22, oy:0.20 },
+    { x:0.8,  y:0.15, r:0.50, color:[140,60,255],    speed:0.0006, angle:2.1, ox:0.18, oy:0.25 },
+    { x:0.55, y:0.75, r:0.60, color:[233,120,30],    speed:0.0005, angle:4.2, ox:0.20, oy:0.18 },
+    { x:0.1,  y:0.75, r:0.48, color:[20,200,180],    speed:0.0007, angle:1.0, ox:0.15, oy:0.22 },
+    { x:0.65, y:0.45, r:0.42, color:[220,60,130],    speed:0.0009, angle:3.5, ox:0.25, oy:0.15 },
   ];
 
+  let last = 0;
   function draw(ts){
+    const dt = Math.min(ts - last, 32);
+    last = ts;
     ctx.clearRect(0,0,W,H);
     orbs.forEach(o => {
-      o.angle += o.speed * ts * 0.016;
-      const cx = (o.x + Math.sin(o.angle) * 0.18) * W;
-      const cy = (o.y + Math.cos(o.angle * 0.7) * 0.14) * H;
+      o.angle += o.speed * dt;
+      const cx = (o.x + Math.sin(o.angle)         * o.ox) * W;
+      const cy = (o.y + Math.cos(o.angle * 0.73)  * o.oy) * H;
       const rad = o.r * Math.max(W, H);
       const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
       const [r,gv,b] = o.color;
-      g.addColorStop(0,   `rgba(${r},${gv},${b},0.22)`);
-      g.addColorStop(0.5, `rgba(${r},${gv},${b},0.07)`);
-      g.addColorStop(1,   `rgba(${r},${gv},${b},0)`);
+      g.addColorStop(0,    `rgba(${r},${gv},${b},0.55)`);
+      g.addColorStop(0.35, `rgba(${r},${gv},${b},0.22)`);
+      g.addColorStop(0.7,  `rgba(${r},${gv},${b},0.06)`);
+      g.addColorStop(1,    `rgba(${r},${gv},${b},0)`);
       ctx.fillStyle = g;
       ctx.beginPath();
       ctx.arc(cx, cy, rad, 0, Math.PI*2);
