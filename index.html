@@ -608,8 +608,8 @@ footer{
     </div>
     <div class="hero-stats reveal">
       <div class="hero-stat">
-        <span class="hero-stat-num"><span class="counter accent" data-target="6100000" data-prefix="" data-suffix="M+">6.1M+</span></span>
-        <span class="hero-stat-label">Impressions · 2025-26</span>
+        <span class="hero-stat-num"><span class="counter accent" data-target="18000" data-prefix="$" data-suffix="K+">$18K+</span></span>
+        <span class="hero-stat-label">Ad Spend Managed · 2025-26</span>
       </div>
       <div class="hero-stat">
         <span class="hero-stat-num"><span class="counter" data-target="5360" data-prefix="" data-suffix="+">5,360+</span></span>
@@ -1252,6 +1252,8 @@ function animateCounter(el) {
     let display;
     if (target >= 1000000) {
       display = (current / 1000000).toFixed(1) + 'M';
+    } else if (target >= 10000) {
+      display = (current / 1000).toFixed(0) + 'K';
     } else if (target >= 1000) {
       display = current.toLocaleString();
     } else {
