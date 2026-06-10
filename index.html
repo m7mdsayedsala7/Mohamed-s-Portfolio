@@ -508,17 +508,7 @@ footer{
   .portfolio-summary{grid-template-columns:repeat(2,1fr);}
   .insights-grid{grid-template-columns:1fr;}
 }
-@media(max-width:640px).contact-links{
-  grid-template-columns:1fr;
-}
-
-.campaign-metrics{
-  grid-template-columns:1fr;
-}
-
-.hero-name{
-  font-size:3rem;
-}{
+@media(max-width:640px){
   nav{padding:16px 4%;}
   .nav-links{display:none;}
   .nav-toggle{display:flex;}
@@ -1167,20 +1157,15 @@ footer{
       </div>
     </div>
           <div class="form-group">
-        <label class="form-label">Subject</label>
-<input class="form-input" type="text" placeholder="Collaboration, job opportunity, consultation..."/>
-</div>
-
-<div class="form-group">
-  <label class="form-label">Message</label>
-  <textarea class="form-textarea" placeholder="Tell me about what you're working on and how I can help..."></textarea>
-</div>
-
-<button type="submit" class="btn-submit">Send Message →</button>
-
-<p id="form-msg" style="font-size:.875rem;color:#50C878;margin-top:.5rem;display:none;">
-  ✓ Message sent! I'll get back to you within 24 hours.
-</p>
+            <label class="form-label">Subject</label>
+            <input class="form-input" type="text" placeholder="Collaboration, job opportunity, consultation..."/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Tell me about what you're working on and how I can help..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message →</button>
+          <p id="form-msg" style="font-size:.875rem;color:#50C878;margin-top:.5rem;display:none;">✓ Message sent! I'll get back to you within 24 hours.</p>
         </form>
       </div>
     </div>
